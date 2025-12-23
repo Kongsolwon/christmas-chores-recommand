@@ -112,6 +112,9 @@
             margin: 10px;
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
         }
 
         .button:hover {
@@ -119,11 +122,99 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
         }
 
+        /* 코스 추천 기능 - 새로 추가! */
+        .recommend-section {
+            background: rgba(255, 215, 0, 0.15);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .recommend-section h2 {
+            color: #ffd700;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .quiz-container {
+            margin: 20px 0;
+        }
+
+        .quiz-question {
+            font-size: 1.2em;
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .quiz-option.selected {
+            background: linear-gradient(45deg, #d4145a, #fbb03b);
+            border-color: #ffd700;
+        }
+
+        .result-box {
+            display: none;
+            background: rgba(255, 255, 255, 0.2);
+            border: 3px solid #ffd700;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-box h3 {
+            color: #ffd700;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .result-icon {
+            font-size: 4em;
+            margin: 20px 0;
+        }
+
         footer {
             text-align: center;
             padding: 30px;
             margin-top: 50px;
             background: rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .quiz-options {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -146,6 +237,118 @@
         }
 
         setInterval(createSnowflake, 200);
+
+        // 코스 추천 시스템
+        let answers = {
+            mood: '',
+            budget: '',
+            activity: ''
+        };
+
+        function selectOption(question, value, element) {
+            answers[question] = value;
+            
+            const options = element.parentElement.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function getRecommendation() {
+            if (!answers.mood || !answers.budget || !answers.activity) {
+                alert('모든 질문에 답해주세요! 🎄');
+                return;
+            }
+
+            let recommendation = {
+                icon: '',
+                title: '',
+                description: '',
+                activities: []
+            };
+
+            // 추천 로직
+            if (answers.mood === 'romantic' && answers.budget === 'high') {
+                recommendation = {
+                    icon: '🥂',
+                    title: '럭셔리 로맨틱 코스',
+                    description: '최고급 레스토랑과 야경을 즐기는 특별한 밤!',
+                    activities: ['🍽️ 5성급 호텔 디너', '🌃 한강 크루즈', '🥂 스카이 라운지', '💎 프리미엄 선물']
+                };
+            } else if (answers.mood === 'romantic') {
+                recommendation = {
+                    icon: '💕',
+                    title: '로맨틱 야경 코스',
+                    description: '반짝이는 불빛과 함께하는 감성 데이트!',
+                    activities: ['☕ 감성 카페', '🎄 크리스마스 마켓', '🍝 루프탑 레스토랑', '🌃 야경 명소']
+                };
+            } else if (answers.activity === 'active') {
+                recommendation = {
+                    icon: '⛸️',
+                    title: '겨울 액티비티 코스',
+                    description: '스케이트와 눈썰매로 즐기는 활동적인 하루!',
+                    activities: ['🥞 브런치 카페', '⛸️ 아이스 스케이팅', '☕ 따뜻한 카페', '🍕 이탈리안 레스토랑']
+                };
+            } else if (answers.mood === 'cultural') {
+                recommendation = {
+                    icon: '🎭',
+                    title: '문화 예술 코스',
+                    description: '전시회와 공연으로 감성 충전!',
+                    activities: ['🖼️ 크리스마스 전시', '☕ 뮤지엄 카페', '🎭 뮤지컬 관람', '🍷 와인바']
+                };
+            } else if (answers.activity === 'relaxed') {
+                recommendation = {
+                    icon: '☕',
+                    title: '힐링 감성 코스',
+                    description: '여유롭게 즐기는 편안한 크리스마스!',
+                    activities: ['📚 북카페', '🥖 베이커리 투어', '🌿 식물원', '🍰 디저트 카페']
+                };
+            } else if (answers.budget === 'low') {
+                recommendation = {
+                    icon: '🎄',
+                    title: '가성비 데이트 코스',
+                    description: '알뜰하지만 의미있는 크리스마스!',
+                    activities: ['🎄 크리스마스 거리', '☕ 프랜차이즈 카페', '🍜 맛집 탐방', '📸 포토존 투어']
+                };
+            } else {
+                recommendation = {
+                    icon: '💝',
+                    title: '균형잡힌 데이트 코스',
+                    description: '로맨틱하면서도 합리적인 완벽한 코스!',
+                    activities: ['☕ 분위기 좋은 카페', '🎁 선물 쇼핑', '🍽️ 맛있는 레스토랑', '🌃 야경 산책']
+                };
+            }
+
+            showResult(recommendation);
+        }
+
+        function showResult(recommendation) {
+            const resultBox = document.getElementById('result-box');
+            const resultContent = document.getElementById('result-content');
+            
+            let activitiesHTML = recommendation.activities.map(activity => 
+                `<div style="background: rgba(255,255,255,0.1); padding: 10px; margin: 10px 0; border-radius: 8px;">
+                    ${activity}
+                </div>`
+            ).join('');
+
+            resultContent.innerHTML = `
+                <div class="result-icon">${recommendation.icon}</div>
+                <h3>${recommendation.title}</h3>
+                <p style="font-size: 1.2em; margin: 20px 0; line-height: 1.6;">
+                    ${recommendation.description}
+                </p>
+                <div style="text-align: left; margin-top: 20px;">
+                    <strong style="color: #ffd700; font-size: 1.2em;">추천 일정:</strong>
+                    ${activitiesHTML}
+                </div>
+                <p style="margin-top: 20px; font-size: 1.1em;">
+                    🎁 이 코스로 특별한 크리스마스를 만들어보세요!
+                </p>
+            `;
+            
+            resultBox.style.display = 'block';
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     </script>
 
     <header>
@@ -168,6 +371,72 @@
                 <span class="ornament">🟡</span>
                 <span class="ornament">🔵</span>
                 <span class="ornament">🟢</span>
+            </div>
+        </div>
+
+        <!-- 코스 추천 기능 - 새로 추가! -->
+        <div class="card recommend-section">
+            <h2>🎁 나에게 맞는 크리스마스 코스 찾기</h2>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em;">
+                간단한 질문으로 당신에게 딱 맞는 코스를 추천해드립니다!
+            </p>
+
+            <div class="quiz-container">
+                <div class="quiz-question">Q1. 어떤 분위기를 원하시나요?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption('mood', 'romantic', this)">
+                        💕 로맨틱한
+                    </div>
+                    <div class="quiz-option" onclick="selectOption('mood', 'fun', this)">
+                        😊 즐거운
+                    </div>
+                    <div class="quiz-option" onclick="selectOption('mood', 'cultural', this)">
+                        🎭 문화적인
+                    </div>
+                    <div class="quiz-option" onclick="selectOption('mood', 'relaxed', this)">
+                        😌 편안한
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question">Q2. 예산은 어느 정도인가요?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption('budget', 'low', this)">
+                        💰 10만원 이하
+                    </div>
+                    <div class="quiz-option" onclick="selectOption('budget', 'medium', this)">
+                        💰💰 10~20만원
+                    </div>
+                    <div class="quiz-option" onclick="selectOption('budget', 'high', this)">
+                        💰💰💰 20만원 이상
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question">Q3. 어떤 활동을 선호하시나요?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption('activity', 'active', this)">
+                        🏃 활동적인
+                    </div>
+                    <div class="quiz-option" onclick="selectOption('activity', 'moderate', this)">
+                        🚶 적당한
+                    </div>
+                    <div class="quiz-option" onclick="selectOption('activity', 'relaxed', this)">
+                        🧘 여유로운
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="getRecommendation()">
+                    ✨ 추천받기 ✨
+                </button>
+            </div>
+
+            <div class="result-box" id="result-box">
+                <div id="result-content"></div>
             </div>
         </div>
 
