@@ -459,4 +459,766 @@
     </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Elegant Christmas Experience</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Noto+Serif+KR:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif KR', 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #f8f8f8;
+            overflow-x: hidden;
+            min-height: 100vh;
+            letter-spacing: 0.5px;
+        }
+
+        /* 우아한 눈 내리는 효과 */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1em;
+            animation: fall linear infinite;
+            z-index: 1000;
+            pointer-events: none;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 우아한 헤더 */
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+            position: relative;
+        }
+
+        header::before {
+            content: '❄';
+            position: absolute;
+            top: 20px;
+            left: 50px;
+            font-size: 2em;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        header::after {
+            content: '❄';
+            position: absolute;
+            top: 40px;
+            right: 50px;
+            font-size: 2em;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5em;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #DAA520;
+            text-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
+            animation: subtleGlow 4s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes subtleGlow {
+            0%, 100% { 
+                text-shadow: 0 0 20px rgba(218, 165, 32, 0.3),
+                             0 0 40px rgba(218, 165, 32, 0.1);
+            }
+            50% { 
+                text-shadow: 0 0 30px rgba(218, 165, 32, 0.5),
+                             0 0 60px rgba(218, 165, 32, 0.2);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            opacity: 0.9;
+            letter-spacing: 2px;
+            color: #e8e8e8;
+        }
+
+        /* 우아한 컨테이너 */
+        .container {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+
+        .elegant-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4),
+                        0 0 1px rgba(218, 165, 32, 0.3);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .elegant-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(218, 165, 32, 0.1), 
+                transparent);
+            border-radius: 25px;
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
+        }
+
+        .elegant-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5),
+                        0 0 30px rgba(218, 165, 32, 0.2);
+        }
+
+        .elegant-card:hover::before {
+            opacity: 1;
+        }
+
+        /* 우아한 트리 */
+        .elegant-tree {
+            text-align: center;
+            font-size: 2.2em;
+            line-height: 0.85;
+            margin: 40px 0;
+            filter: drop-shadow(0 0 10px rgba(218, 165, 32, 0.3));
+        }
+
+        .ornament {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 2.5em;
+            animation: gentleSwing 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+        }
+
+        @keyframes gentleSwing {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .ornament:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .ornament:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        .ornament:nth-child(4) {
+            animation-delay: 3s;
+        }
+
+        /* 우아한 메시지 */
+        .elegant-message {
+            text-align: center;
+            font-size: 1.2em;
+            line-height: 2;
+            margin: 30px 0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .elegant-message p {
+            margin: 15px 0;
+        }
+
+        /* 추천 섹션 */
+        .recommend-section {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.08), rgba(218, 165, 32, 0.03));
+            border: 1px solid rgba(218, 165, 32, 0.3);
+        }
+
+        .recommend-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #DAA520;
+            font-size: 2.3em;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .recommend-intro {
+            text-align: center;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .quiz-container {
+            margin: 35px 0;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quiz-question {
+            font-size: 1.25em;
+            color: #DAA520;
+            margin-bottom: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1.5px solid rgba(218, 165, 32, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1.05em;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .quiz-option:hover {
+            background: rgba(218, 165, 32, 0.1);
+            border-color: rgba(218, 165, 32, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(218, 165, 32, 0.2);
+        }
+
+        .quiz-option.selected {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.3), rgba(184, 134, 11, 0.3));
+            border-color: #DAA520;
+            box-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
+        }
+
+        .elegant-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #DAA520, #B8860B);
+            color: #ffffff;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 400;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(218, 165, 32, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1.05em;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif KR', serif;
+        }
+
+        .elegant-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(218, 165, 32, 0.4);
+            background: linear-gradient(135deg, #B8860B, #DAA520);
+        }
+
+        .result-box {
+            display: none;
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.15), rgba(218, 165, 32, 0.05));
+            border: 2px solid rgba(218, 165, 32, 0.5);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            text-align: center;
+            animation: elegantFadeIn 0.6s ease;
+        }
+
+        @keyframes elegantFadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(-30px) scale(0.95);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .result-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #DAA520;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .result-icon {
+            font-size: 4.5em;
+            margin: 25px 0;
+            filter: drop-shadow(0 0 15px rgba(218, 165, 32, 0.4));
+        }
+
+        .result-description {
+            font-size: 1.15em;
+            line-height: 1.9;
+            margin: 20px 0;
+            font-weight: 300;
+        }
+
+        .activity-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 10px;
+            border-left: 3px solid #DAA520;
+            text-align: left;
+            font-weight: 300;
+            transition: all 0.3s;
+        }
+
+        .activity-item:hover {
+            background: rgba(218, 165, 32, 0.1);
+            transform: translateX(5px);
+        }
+
+        /* 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 5% auto;
+            padding: 40px;
+            max-width: 800px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(15, 52, 96, 0.95));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 2px solid rgba(218, 165, 32, 0.5);
+            box-shadow: 0 0 50px rgba(218, 165, 32, 0.3);
+            animation: slideDown 0.5s;
+            text-align: center;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: #DAA520;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close:hover {
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .puppy-container {
+            margin: 30px 0;
+        }
+
+        .puppy-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            margin: 20px auto;
+            display: block;
+            border: 3px solid rgba(218, 165, 32, 0.3);
+        }
+
+        .puppy-message {
+            font-size: 1.3em;
+            color: #DAA520;
+            margin: 20px 0;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 2px;
+        }
+
+        /* 오디오 플레이어 스타일 */
+        .audio-player {
+            margin: 30px 0;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+        }
+
+        .audio-player audio {
+            width: 100%;
+            margin: 20px 0;
+            filter: sepia(100%) saturate(200%) hue-rotate(15deg);
+        }
+
+        .carol-title {
+            font-size: 1.5em;
+            color: #DAA520;
+            margin: 15px 0;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .carol-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .carol-item {
+            background: rgba(218, 165, 32, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+        }
+
+        .carol-item:hover {
+            background: rgba(218, 165, 32, 0.2);
+            transform: scale(1.05);
+        }
+
+        .carol-item.playing {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.3), rgba(184, 134, 11, 0.3));
+            border-color: #DAA520;
+        }
+
+        /* 우아한 푸터 */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            margin-top: 80px;
+            border-top: 1px solid rgba(218, 165, 32, 0.3);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        .divider {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #DAA520, transparent);
+            margin: 30px auto;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .elegant-card {
+                padding: 30px;
+            }
+
+            .quiz-options {
+                grid-template-columns: 1fr;
+            }
+
+            header::before,
+            header::after {
+                display: none;
+            }
+
+            .modal-content {
+                margin: 10% 10px;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 우아한 눈 내리는 효과 -->
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            const symbols = ['❄', '❅', '❆', '✦', '✧'];
+            snowflake.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = Math.random() * 4 + 4 + 's';
+            snowflake.style.opacity = Math.random() * 0.5 + 0.3;
+            snowflake.style.fontSize = Math.random() * 12 + 8 + 'px';
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 8000);
+        }
+
+        setInterval(createSnowflake, 300);
+
+        // 우아한 코스 추천 시스템
+        let selections = {
+            atmosphere: '',
+            investment: '',
+            preference: ''
+        };
+
+        function selectOption(category, value, element) {
+            selections[category] = value;
+            
+            const options = element.parentElement.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function provideCourseRecommendation() {
+            if (!selections.atmosphere || !selections.investment || !selections.preference) {
+                alert('모든 항목을 선택해 주시기 바랍니다.');
+                return;
+            }
+
+            let recommendation = {
+                icon: '',
+                title: '',
+                description: '',
+                activities: []
+            };
+
+            // 정교한 추천 알고리즘
+            if (selections.atmosphere === 'sophisticated' && selections.investment === 'premium') {
+                recommendation = {
+                    icon: '🥂',
+                    title: 'Premium Romantic Experience',
+                    description: '최상급 서비스와 함께하는 품격 있는 크리스마스 이브를 선사해 드립니다.',
+                    activities: [
+                        '🍾 시그니처 샴페인 환영 인사',
+                        '🌹 5성급 호텔 파인 다이닝 디너 코스',
+                        '🎹 프라이빗 라운지에서의 라이브 재즈 공연',
+                        '🌃 한강 럭셔리 크루즈 승선',
+                        '💎 큐레이션 된 특별 선물 증정'
+                    ]
+                };
+            } else if (selections.atmosphere === 'sophisticated') {
+                recommendation = {
+                    icon: '💕',
+                    title: 'Elegant Evening Journey',
+                    description: '세련된 감각으로 채워진 낭만적인 겨울밤의 여정을 경험하십시오.',
+                    activities: [
+                        '☕ 프라이빗 카페 테라스에서의 시작',
+                        '🎨 겨울 특별 아트 전시 관람',
+                        '🍽️ 뷰가 아름다운 루프탑 레스토랑',
+                        '🎄 도심 속 일루미네이션 산책로',
+                        '🌙 감성적인 야경 명소에서의 마무리'
+                    ]
+                };
+            } else if (selections.preference === 'dynamic') {
+                recommendation = {
+                    icon: '⛸️',
+                    title: 'Winter Active Experience',
+                    description: '활기찬 겨울 액티비티로 특별한 추억을 만들어 보시기 바랍니다.',
+                    activities: [
+                        '🥞 에너지 충전을 위한 브런치',
+                        '⛸️ 프리미엄 아이스링크에서의 스케이팅',
+                        '☕ 따뜻한 실내 카페에서의 여유',
+                        '🍝 정통 이탈리안 트라토리아',
+                        '🎿 선택 가능한 야간 스키 체험'
+                    ]
+                };
+            } else if (selections.atmosphere === 'artistic') {
+                recommendation = {
+                    icon: '🎭',
+                    title: 'Cultural Heritage Journey',
+                    description: '문화와 예술이 어우러진 지적이고 감성적인 하루를 제안합니다.',
+                    activities: [
+                        '🖼️ 크리스마스 특별 전시 큐레이션 투어',
+                        '📚 감성 서적과 함께하는 티타임',
+                        '🎭 프라이빗 박스석 뮤지컬 관람',
+                        '🍷 소믈리에가 추천하는 와인 페어링',
+                        '🎼 클래식 콘서트 감상 (선택)'
+                    ]
+                };
+            } else if (selections.preference === 'tranquil') {
+                recommendation = {
+                    icon: '☕',
+                    title: 'Serene Winter Healing',
+                    description: '고요하고 평온한 겨울의 정취를 만끽하시는 여유로운 시간입니다.',
+                    activities: [
+                        '📖 큐레이션 된 독립 서점 방문',
+                        '🥐 장인의 베이커리 투어',
+                        '🌿 온실 정원에서의 명상적 산책',
+                        '🍰 프라이빗 디저트 바 예약',
+                        '🕯️ 캔들라이트 티 세레모니'
+                    ]
+                };
+            } else if (selections.investment === 'moderate') {
+                recommendation = {
+                    icon: '🎄',
+                    title: 'Refined Classic Course',
+                    description: '합리적이면서도 품격을 잃지 않는 균형잡힌 크리스마스 코스입니다.',
+                    activities: [
+                        '🎄 시즌 한정 크리스마스 마켓 투어',
+                        '☕ 시그니처 크리스마스 음료',
+                        '🍽️ 감각적인 분위기의 비스트로',
+                        '📸 인생샷 명소 포토 세션',
+                        '🎁 의미있는 핸드메이드 선물 쇼핑'
+                    ]
+                };
+            } else {
+                recommendation = {
+                    icon: '💝',
+                    title: 'Harmonious Winter Date',
+                    description: '세심하게 기획된 조화로운 크리스마스 데이트를 선사합니다.',
+                    activities: [
+                        '☕ 분위기 있는 카페에서의 시작',
+                        '🎁 정성스러운 선물 준비 시간',
+                        '🍽️ 특별한 레스토랑 예약',
+                        '🌃 로맨틱한 야경 감상',
+                        '💌 진심을 담은 편지 교환'
+                    ]
+                };
+            }
+
+            displayRecommendation(recommendation);
+        }
+
+        function displayRecommendation(recommendation) {
+            const resultBox = document.getElementById('result-box');
+            const resultContent = document.getElementById('result-content');
+            
+            let activitiesHTML = recommendation.activities.map(activity => 
+                `<div class="activity-item">${activity}</div>`
+            ).join('');
+
+            resultContent.innerHTML = `
+                <div class="result-icon">${recommendation.icon}</div>
+                <h3>${recommendation.title}</h3>
+                <div class="divider"></div>
+                <p class="result-description">
+                    ${recommendation.description}
+                </p>
+                <div style="margin: 35px 0;">
+                    <strong style="color: #DAA520; font-size: 1.3em; letter-spacing: 1px;">
+                        Recommended Itinerary
+                    </strong>
+                    <div style="margin-top: 20px;">
+                        ${activitiesHTML}
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <p style="margin-top: 25px; font-size: 1.1em; font-style: italic; opacity: 0.9;">
+                    "특별한 순간은 세심한 준비에서 시작됩니다"
+                </p>
+            `;
+            
+            resultBox.style.display = 'block';
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // 선물 (강아지 사진) 모달
+        function showGiftModal() {
+            const modal = document.getElementById('giftModal');
+            modal.style.display = 'block';
+            
+            // 랜덤 강아지 사진 로드
+            loadRandomPuppy();
+        }
+
+        function loadRandomPuppy() {
+            const puppyImages = [
+                'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=600&h=600&fit=crop', // 크리스마스 모자 쓴 강아지
+                'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=600&h=600&fit=crop', // 귀여운 골든 리트리버
+                'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&h=600&fit=crop', // 작은 강아지
+                'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&h=600&fit=crop', // 행복한 강아지
+                'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=600&fit=crop'  // 크리스마스 테마
+            ];
+            
+            const randomIndex = Math.floor(Math.random() * puppyImages.length);
+            document.getElementById('puppyImg').src = puppyImages[randomIndex];
+        }
+
+        function closeGiftModal() {
+            document.getElementById('giftModal').style.display = 'none';
+        }
+
+        // 캐롤 모달
+        let currentAudio = null;
+        let currentPlayingItem = null;
+
+        function showCarolModal() {
+            const modal = document.getElementById('carolModal');
+            modal.style.display = 'block';
+        }
+
+        function closeCarolModal() {
+            document.getElementById('carolModal').style.display = 'none';
+            if (currentAudio) {
+                currentAudio.pause();
+            }
+        }
+
+        function playCarol(carolName, url, element) {
+
+
 
